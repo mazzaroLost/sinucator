@@ -1,0 +1,19 @@
+{
+  "name": "sinucator",
+  "version": "1.0.0",
+  "description": "projeto para controlar partidas de sinuca.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazzaroLost/sinucator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mazzaroLost/sinucator/issues"
+  },
+  "homepage": "https://github.com/mazzaroLost/sinucator#readme"
+}
