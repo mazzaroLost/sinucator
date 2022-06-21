@@ -1,0 +1,47 @@
+1 jogador
+id                      jogadorID
+string                  nome
+string                  apelido
+jogadorPartida[]        partidas
+
+2   jogadorPartida
+id           jogadorID
+id           partidaID
+bool         vitoria
+
+3  partida  
+id    partidaID
+id    temporadaID
+id    patidaTipoID
+jogadorPartida[]  jogadores 
+
+4 temporadaTipo
+id   temporadaTipo
+string  tipo
+string  modo
+
+5 temporada
+id  temporadaID
+id    patidaTipoID
+string      nome 
+DataTime    dataInicio
+DataTime    dataFim
+partida[]   partidas
+
+
+6 rankingTemporada
+id  rankingID
+id  temporadaID
+rankingTemporadaJogador[] jogadores
+
+
+7 rankingTemporadaJogador
+id rankingTemporadaJogadorID
+id jogadorID
+number  vitoria
+number derrota
+
+
+
+
+

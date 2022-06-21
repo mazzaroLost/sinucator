@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mazzaroLost/sinucator/issues"
   },
-  "homepage": "https://github.com/mazzaroLost/sinucator#readme"
+  "homepage": "https://github.com/mazzaroLost/sinucator#readme",
+  "dependencies": {
+    "prompt-async": "^0.9.9"
+  }
 }
