@@ -1,8 +1,12 @@
 const { DB } = require("./db");
-const { Player } = require("./entities/player");
 const { Match } = require("./entities/match");
+const { Player } = require("./entities/player");
+const { PlayerMatch } = require("./entities/playerMatch");
 const { Season } = require("./entities/season");
+const { SeasonRanking } = require("./entities/seasonRanking");
+const { SeasonRankingPlayer } = require("./entities/seasonRankingPlayer");
 const { SeasonType } = require("./entities/seasonType");
+
 
 const sType1 = new SeasonType("par/impar", "individual");
 const sType2 = new SeasonType("par/impar", "dupla");
