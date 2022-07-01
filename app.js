@@ -12,27 +12,27 @@ const sType2 = new SeasonType("par/impar", "dupla");
 DB.saveSeasonType(sType1);
 DB.saveSeasonType(sType2);
 
-const s1 = new Season(0, "season01", "XX/XX/XX", "xx/xx/xx", []);
+const s1 = new Season(sType1.id, "season01", "XX/XX/XX", "xx/xx/xx", []);
 DB.saveSeason(s1);
 
 const p1 = new Player("Gustavo", "lost", []);
-const p2 = new Player("Danilo", "Renatinho Mãozinha", []);
+const p2 = new Player("Danilo", "Renatinho", []);
 DB.savePlayer(p1);
 DB.savePlayer(p2);
 
-const m1 = new Match(0, [])
-const m2 = new Match(0, []);
-const m3 = new Match(0, []);
+const m1 = new Match(s1.id, [])
+const m2 = new Match(s1.id, []);
+const m3 = new Match(s1.id, []);
 DB.saveMatch(m1);
 DB.saveMatch(m2);
 DB.saveMatch(m3);
 
-const pm1w = new PlayerMatch(0, m1, true);
-const pm1l = new PlayerMatch(0, m1, false);
-const pm2w = new PlayerMatch(0, m2, true);
-const pm2l = new PlayerMatch(0, m2, false);
-const pm3w = new PlayerMatch(0, m2, true);
-const pm3l = new PlayerMatch(0, m2, false);
+const pm1w = new PlayerMatch(p1.id, m1.id, true)
+const pm1l = new PlayerMatch(p2.id, m1.id, false);
+const pm2w = new PlayerMatch(p1.id, m2.id, true);
+const pm2l = new PlayerMatch(p2.id, m2.id, false);
+const pm3w = new PlayerMatch(p1.id, m3.id, true);
+const pm3l = new PlayerMatch(p2.id, m3.id, false);
 DB.savePlayerMatch(pm1w);
 DB.savePlayerMatch(pm1l);
 DB.savePlayerMatch(pm2w);
@@ -40,32 +40,20 @@ DB.savePlayerMatch(pm2l);
 DB.savePlayerMatch(pm3w);
 DB.savePlayerMatch(pm3l);
 
-const sr1 = new SeasonRanking(0, []);
+const sr1 = new SeasonRanking(s1.id, []);
 DB.saveSeasonRanking(sr1);
 
-const srp1 = new SeasonRankingPlayer(0, [], []);
+const srp1 = new SeasonRankingPlayer(p1.id, [], []);
 DB.saveSeasonRankingPlayer(srp1);
+const srp2 = new SeasonRankingPlayer(p2.id, [], []);
+DB.saveSeasonRankingPlayer(srp2);
 
-DB.seasonTypes.push(sType1);
-DB.seasonTypes.push(sType2);
+console.log(DB.matches);
+console.log(DB.players);
+console.log(DB.playerMatches);
+console.log(DB.seasons);
+console.log(DB.seasonRankings);
+console.log(DB.seasonRankingPlayers);
+console.log(DB.seasonTypes);
 
-DB.seasons.push(s1);
-
-DB.players.push(p1);
-DB.players.push(p2);
-
-DB.matches.push(m1);
-DB.matches.push(m2);
-DB.matches.push(m3);
-
-DB.playerMatches.push(pm1w);
-DB.playerMatches.push(pm1l);
-DB.playerMatches.push(pm2w);
-DB.playerMatches.push(pm2l);
-DB.playerMatches.push(pm3w);
-DB.playerMatches.push(pm3l);
-
-DB.seasonRankings.push(sr1);
-
-DB.seasonRankingPlayers.push(srp1);
 
