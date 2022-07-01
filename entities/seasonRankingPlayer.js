@@ -1,4 +1,4 @@
-exports.seasonRankingPlayer = function SeasonRankingPlayer(playerID, totalWins, totalDefeats) {
+exports.SeasonRankingPlayer = function SeasonRankingPlayer(playerID, totalWins, totalDefeats) {
     this.id = 0;
     this.playerID = playerID;
     this.totalWins = totalWins;
