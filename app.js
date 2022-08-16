@@ -7,53 +7,87 @@ const { SeasonRanking } = require("./entities/seasonRanking");
 const { SeasonRankingPlayer } = require("./entities/seasonRankingPlayer");
 const { SeasonType } = require("./entities/seasonType");
 
-const sType1 = new SeasonType("par/impar", "individual");
-const sType2 = new SeasonType("par/impar", "dupla");
-DB.saveSeasonType(sType1);
-DB.saveSeasonType(sType2);
+DB.savePlayer(new Player("Gustavo", "lost"));
+DB.savePlayer(new Player("Danilo", "Renatinho"));
 
-const s1 = new Season(sType1.id, "season01", "XX/XX/XX", "xx/xx/xx", []);
-DB.saveSeason(s1);
 
-const p1 = new Player("Gustavo", "lost", []);
-const p2 = new Player("Danilo", "Renatinho", []);
-DB.savePlayer(p1);
-DB.savePlayer(p2);
+var mode = "individual";
+var type = "3bolinhas";
+var seasonType = DB.seasonTypes.find(p => p.type == type && p.mode == mode);
+DB.saveSeason(new Season(seasonType.id, "temp 1", "2022-09-01", "2022-09-30"));
 
-const m1 = new Match(s1.id, [])
-const m2 = new Match(s1.id, []);
-const m3 = new Match(s1.id, []);
+var s1 = DB.seasons.find(s => s.name == "temp 1");
+var p1 = DB.players.find(p => p.name == "Danilo");
+var p2 = DB.players.find(p => p.name == "Gustavo");
+
+const m1 = new Match(s1.id);
 DB.saveMatch(m1);
-DB.saveMatch(m2);
-DB.saveMatch(m3);
 
-const pm1w = new PlayerMatch(p1.id, m1.id, true)
-const pm1l = new PlayerMatch(p2.id, m1.id, false);
-const pm2w = new PlayerMatch(p1.id, m2.id, true);
-const pm2l = new PlayerMatch(p2.id, m2.id, false);
-const pm3w = new PlayerMatch(p1.id, m3.id, true);
-const pm3l = new PlayerMatch(p2.id, m3.id, false);
-DB.savePlayerMatch(pm1w);
-DB.savePlayerMatch(pm1l);
-DB.savePlayerMatch(pm2w);
-DB.savePlayerMatch(pm2l);
-DB.savePlayerMatch(pm3w);
-DB.savePlayerMatch(pm3l);
 
-const sr1 = new SeasonRanking(s1.id, []);
-DB.saveSeasonRanking(sr1);
+var pm1 = new PlayerMatch(p1.id, m1.id, true);
+var pm2 = new PlayerMatch(p2.id, m1.id, false);
 
-const srp1 = new SeasonRankingPlayer(p1.id, [], []);
-DB.saveSeasonRankingPlayer(srp1);
-const srp2 = new SeasonRankingPlayer(p2.id, [], []);
-DB.saveSeasonRankingPlayer(srp2);
+DB.savePlayerMatch(pm1);
+DB.savePlayerMatch(pm2);
 
-console.log(DB.matches);
-console.log(DB.players);
-console.log(DB.playerMatches);
-console.log(DB.seasons);
-console.log(DB.seasonRankings);
-console.log(DB.seasonRankingPlayers);
-console.log(DB.seasonTypes);
+console.log("temporada" + s1.name + ", modalidade: " + seasonType.type + " " + seasonType.mode);
+
+//partida entre jogadores? $jogadornome, $jogadornome
+// vencedor: $vencedorNome
+
+
+
+
+
+
+
+
+
+
+
+
+//const s1 = new Season(sType1.id, "season01", "XX/XX/XX", "xx/xx/xx", []);
+//DB.saveSeason(s1);
+//
+//const p1 = new Player("Gustavo", "lost", []);
+//const p2 = new Player("Danilo", "Renatinho", []);
+//DB.savePlayer(p1);
+//DB.savePlayer(p2);
+//
+//const m1 = new Match(s1.id, [])
+//const m2 = new Match(s1.id, []);
+//const m3 = new Match(s1.id, []);
+//DB.saveMatch(m1);
+//DB.saveMatch(m2);
+//DB.saveMatch(m3);
+//
+//const pm1w = new PlayerMatch(p1.id, m1.id, true)
+//const pm1l = new PlayerMatch(p2.id, m1.id, false);
+//const pm2w = new PlayerMatch(p1.id, m2.id, true);
+//const pm2l = new PlayerMatch(p2.id, m2.id, false);
+//const pm3w = new PlayerMatch(p1.id, m3.id, true);
+//const pm3l = new PlayerMatch(p2.id, m3.id, false);
+//DB.savePlayerMatch(pm1w);
+//DB.savePlayerMatch(pm1l);
+//DB.savePlayerMatch(pm2w);
+//DB.savePlayerMatch(pm2l);
+//DB.savePlayerMatch(pm3w);
+//DB.savePlayerMatch(pm3l);
+//
+//const sr1 = new SeasonRanking(s1.id, []);
+//DB.saveSeasonRanking(sr1);
+//
+//const srp1 = new SeasonRankingPlayer(p1.id, [], []);
+//DB.saveSeasonRankingPlayer(srp1);
+//const srp2 = new SeasonRankingPlayer(p2.id, [], []);
+//DB.saveSeasonRankingPlayer(srp2);
+//
+//console.log(DB.matches);
+//console.log(DB.players);
+//console.log(DB.playerMatches);
+//console.log(DB.seasons);
+//console.log(DB.seasonRankings);
+//console.log(DB.seasonRankingPlayers);
+//console.log(DB.seasonTypes);
 
 

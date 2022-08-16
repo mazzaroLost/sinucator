@@ -1,3 +1,5 @@
+const { SeasonType } = require("./entities/seasonType");
+
 function DB() {
     this.matches = [];
     this.players = [];
@@ -7,6 +9,12 @@ function DB() {
     this.seasonRankingPlayers = [];
     this.seasonTypes = [];
 
+    // cadastro de valores fixos da aplicação
+    this.init = function() {
+        this.saveSeasonType(new SeasonType("par/impar", "individual"));
+        this.saveSeasonType(new SeasonType("par/impar", "dupla"));
+        this.saveSeasonType(new SeasonType("3bolinhas", "individual"));
+    }
 
     this.saveMatch = function(match) {
         match.id = this.matches.length + 1;
@@ -43,4 +51,7 @@ function DB() {
     return this;
 }
 
-exports.DB = new DB();
+const db = new DB();
+db.init();
+
+exports.DB = db;
