@@ -17,11 +17,14 @@ var seasonType = DB.seasonTypes.find(p => p.type == type && p.mode == mode);
 DB.saveSeason(new Season(seasonType.id, "temp 1", "2022-09-01", "2022-09-30"));
 
 var s1 = DB.seasons.find(s => s.name == "temp 1");
-var p1 = DB.players.find(p => p.name == "Danilo");
-var p2 = DB.players.find(p => p.name == "Gustavo");
+var p1 = DB.players.find(p => p.name == "Gustavo");
+var p2 = DB.players.find(p => p.name == "Danilo");
+
 
 const m1 = new Match(s1.id);
 DB.saveMatch(m1);
+const m2 = new Match(s1.id);
+DB.saveMatch(m2);
 
 
 var pm1 = new PlayerMatch(p1.id, m1.id, true);
@@ -30,10 +33,26 @@ var pm2 = new PlayerMatch(p2.id, m1.id, false);
 DB.savePlayerMatch(pm1);
 DB.savePlayerMatch(pm2);
 
-console.log("temporada" + s1.name + ", modalidade: " + seasonType.type + " " + seasonType.mode);
+
+var pm3 = new PlayerMatch(p1.id, m1.id, true);
+var pm4 = new PlayerMatch(p2.id, m1.id, false);
+
+DB.savePlayerMatch(pm3);
+DB.savePlayerMatch(pm4);
+
+//console.log("temporada:"+ " "  + s1.name + ", modalidade: " + seasonType.type + " " + seasonType.mode);
 
 //partida entre jogadores? $jogadornome, $jogadornome
 // vencedor: $vencedorNome
+//var tes = DB.findByNamePlayer("Danilo");
+//console.log(tes);
+//var tes1 = DB.findBySeason("temp 1");
+//console.log(tes1);
+//var tes2 = DB.filterBySeason("temp 1");
+//console.log(tes2);
+var tes3 = DB.filterByWinner("Gustavo");
+console.log(tes3);
+
 
 
 

@@ -48,6 +48,24 @@ function DB() {
         seasonType.id = this.seasonTypes.length + 1;
         this.seasonTypes.push(seasonType);
     }
+    this.findByNamePlayer = function(name) {
+        return this.players.find(n => n.name == name);
+    }
+    this.findBySeason = function(seasonName) {
+        const S1 = this.seasons.find(s => s.name == seasonName);
+        return this.matches.find(m => m.seasonID == S1.id);
+    }
+    this.filterBySeason = function(seasonName) {
+        const S1 = this.seasons.find(s => s.name == seasonName);
+        return this.matches.filter(m => m.seasonID == S1.id);
+    }
+    this.filterByWinner = function(playerName, result) {
+        const p1 = this.players.find(p => p.name == playerName);
+        const pm1 = this.playerMatches.filter(p =>p.playerID == p1.id);
+        return pm1.filter(w => w.isWinner == result);
+    }
+    
+    
     return this;
 }
 
