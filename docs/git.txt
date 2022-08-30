@@ -6,3 +6,5 @@ git commit -m "mensagem descrevendo as alteraçoes"
 
 // envia o codigo do commit para o repositorio
 git push
+
+teste
