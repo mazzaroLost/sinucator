@@ -6,9 +6,14 @@ const { Season } = require("./entities/season");
 const { SeasonRanking } = require("./entities/seasonRanking");
 const { SeasonRankingPlayer } = require("./entities/seasonRankingPlayer");
 const { SeasonType } = require("./entities/seasonType");
+const { addPlayer, addMatch } = require("./service");
 
-DB.savePlayer(new Player("Gustavo", "lost"));
-DB.savePlayer(new Player("Danilo", "Renatinho"));
+//DB.savePlayer(new Player("Gustavo", "lost"));
+//DB.savePlayer(new Player("Danilo", "Renatinho"));
+
+addPlayer("Gustavo", "lost");
+addPlayer("Danilo", "renatinho");
+var validPlayer = addPlayer("Gustavo", "lost");
 
 
 var mode = "individual";
@@ -21,24 +26,32 @@ var p1 = DB.players.find(p => p.name == "Gustavo");
 var p2 = DB.players.find(p => p.name == "Danilo");
 
 
-const m1 = new Match(s1.id);
-DB.saveMatch(m1);
-const m2 = new Match(s1.id);
-DB.saveMatch(m2);
+//const m1 = new Match(s1.id);
+//DB.saveMatch(m1);
+//const m2 = new Match(s1.id);
+//DB.saveMatch(m2);
+addMatch(s1.id);
+addMatch(s1.id);
+var validMatch = addMatch(10);
 
 
-var pm1 = new PlayerMatch(p1.id, m1.id, true);
-var pm2 = new PlayerMatch(p2.id, m1.id, false);
 
-DB.savePlayerMatch(pm1);
-DB.savePlayerMatch(pm2);
+//var pm1 = new PlayerMatch(p1.id, m1.id, true);
+//var pm2 = new PlayerMatch(p2.id, m1.id, false);
+//
+//DB.savePlayerMatch(pm1);
+//DB.savePlayerMatch(pm2);
+//
 
 
-var pm3 = new PlayerMatch(p1.id, m1.id, true);
-var pm4 = new PlayerMatch(p2.id, m1.id, false);
 
-DB.savePlayerMatch(pm3);
-DB.savePlayerMatch(pm4);
+
+//
+//var pm3 = new PlayerMatch(p1.id, m1.id, true);
+//var pm4 = new PlayerMatch(p2.id, m1.id, false);
+//
+//DB.savePlayerMatch(pm3);
+//DB.savePlayerMatch(pm4);
 
 //console.log("temporada:"+ " "  + s1.name + ", modalidade: " + seasonType.type + " " + seasonType.mode);
 
@@ -50,8 +63,13 @@ DB.savePlayerMatch(pm4);
 //console.log(tes1);
 //var tes2 = DB.filterBySeason("temp 1");
 //console.log(tes2);
-var tes3 = DB.filterByWinner("Gustavo");
-console.log(tes3);
+//var tes3 = DB.filterByWinner("Danilo");
+//console.log(tes3);
+console.log(DB.players);
+console.log(validPlayer);
+
+console.log(DB.matches);
+console.log(validMatch);
 
 
 
