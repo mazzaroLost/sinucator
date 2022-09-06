@@ -3,11 +3,11 @@ const { SeasonType } = require("./entities/seasonType");
 function DB() {
     this.matches = [];
     this.players = [];
-    this.playerMatches = [];
     this.seasons = [];
     this.seasonRankings = [];
     this.seasonRankingPlayers = [];
     this.seasonTypes = [];
+    this.teams = [];
 
     // cadastro de valores fixos da aplicação
     this.init = function() {
@@ -26,9 +26,9 @@ function DB() {
         this.players.push(player);
     }
 
-    this.savePlayerMatch = function(playerMatch) {
-        playerMatch.id = this.playerMatches.length + 1;
-        this.playerMatches.push(playerMatch);
+    this.saveTeam = function(team) {
+        team.id = this.teams.length + 1;
+        this.teams.push(team);
     }
     this.saveSeason = function(season) {
         season.id = this.seasons.length + 1;

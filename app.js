@@ -1,25 +1,20 @@
 const { DB } = require("./db");
 const { Match } = require("./entities/match");
 const { Player } = require("./entities/player");
-const { PlayerMatch } = require("./entities/playerMatch");
 const { Season } = require("./entities/season");
 const { SeasonRanking } = require("./entities/seasonRanking");
 const { SeasonRankingPlayer } = require("./entities/seasonRankingPlayer");
 const { SeasonType } = require("./entities/seasonType");
-const { addPlayer, addMatch } = require("./service");
+const service = require("./service");
 
-//DB.savePlayer(new Player("Gustavo", "lost"));
-//DB.savePlayer(new Player("Danilo", "Renatinho"));
+service.addPlayer("Gustavo", "lost");
+service.addPlayer("Danilo", "renatinho");
 
-addPlayer("Gustavo", "lost");
-addPlayer("Danilo", "renatinho");
-var validPlayer = addPlayer("Gustavo", "lost");
+service.addSeason("3bolinhas", "individual", "temp 1", "2022-09-01", "2022-09-30");
+var result = service.addSeason("3bolinhas", "individual", "temp 1", "2022-09-01", "2022-09-30");
 
 
-var mode = "individual";
-var type = "3bolinhas";
-var seasonType = DB.seasonTypes.find(p => p.type == type && p.mode == mode);
-DB.saveSeason(new Season(seasonType.id, "temp 1", "2022-09-01", "2022-09-30"));
+
 
 var s1 = DB.seasons.find(s => s.name == "temp 1");
 var p1 = DB.players.find(p => p.name == "Gustavo");
@@ -30,9 +25,7 @@ var p2 = DB.players.find(p => p.name == "Danilo");
 //DB.saveMatch(m1);
 //const m2 = new Match(s1.id);
 //DB.saveMatch(m2);
-addMatch(s1.id);
-addMatch(s1.id);
-var validMatch = addMatch(10);
+
 
 
 
@@ -65,11 +58,9 @@ var validMatch = addMatch(10);
 //console.log(tes2);
 //var tes3 = DB.filterByWinner("Danilo");
 //console.log(tes3);
-console.log(DB.players);
-console.log(validPlayer);
-
-console.log(DB.matches);
-console.log(validMatch);
+//console.log(DB.players);
+//console.log(validPlayer);
+console.log(result);
 
 
 
